@@ -1,0 +1,91 @@
+-- 회원 테이블
+create table member(
+    member_id varchar2(20) constraint pk_member primary key,
+    password varchar2(50) not null,
+    name varchar2(20) not null,
+    email varchar2(50) unique
+);
+
+-- 게시판 테이블
+create table board(
+    bno number constraint pk_board primary key,
+    title varchar2(200) not null,
+    content clob not null,
+    member_id varchar2(20),
+    hit_no number default 0,
+    reg_date date default sysdate,
+    
+    reply_group number(5) default 0, /* 원글과 답글을 묶어주는 역할(그룹) */
+    reply_order number(5) default 0, /* 그룹 내 정렬순서 */
+    reply_indent number(5) default 0, /* 들여쓰기 */
+);
+-- 시퀀스
+create sequence seq_board increment by 1 start with 1;
+
+-- 벌크 데이터
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'First Post','This is the first post.','java',0,to_date('22/01/01','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Second Post','This is the second post.','java',0,to_date('22/01/02','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Third Post','This is the third post.','java',0,to_date('22/02/03','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Fourth Post','This is the fourth post.','java',0,to_date('22/03/04','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Fifth Post','This is the fifth post.','java',0,to_date('22/04/05','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Sixth to First Post','This is a Sixth post.','java',0,to_date('22/05/06','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Seventh to First Post','This is Seventh post.','java',0,to_date('22/06/07','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Eight to Second Post','This is Eight post.','java',0,to_date('22/07/08','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Ninth to Second Post','This is Ninth post.','java',0,to_date('22/08/08','RR/MM/DD'),seq_board.currval,0,0);
+Insert into board (bno, title, content, member_id, hit_no, reg_date,REPLY_GROUP,REPLY_ORDER,REPLY_INDENT) 
+values (seq_board.nextval,'Tenth to Third Post','This is a Tenth post.','java',0,to_date('22/09/10','RR/MM/DD'),seq_board.currval,0,0);
+commit; --
+
+--파일 업로드를 위한 파일명 컬럼 추가
+alter table board add file_name varchar2(255);
+
+-- 시퀀스 생성
+CREATE SEQUENCE movie_seq
+    START WITH 1
+    INCREMENT BY 1
+    NOCACHE
+    NOCYCLE;
+
+-- 테이블 생성
+CREATE TABLE movie (
+    movie_id INT PRIMARY KEY,
+    title VARCHAR2(255) NOT NULL,
+    director VARCHAR2(100) NOT NULL,
+    actors VARCHAR2(255) NOT NULL,
+    genre VARCHAR2(100) NOT NULL,
+    release_date DATE NOT NULL,
+    running_time INT NOT NULL,
+    rating NUMBER(3, 2) NOT NULL,
+    poster_url VARCHAR2(255),
+    trailer_url VARCHAR2(255),
+    synopsis CLOB
+);
+
+-- 트리거 생성
+CREATE OR REPLACE TRIGGER movie_trigger
+    BEFORE INSERT ON movie
+    FOR EACH ROW
+BEGIN
+    SELECT movie_seq.NEXTVAL INTO :NEW.movie_id FROM dual;
+END;
+
+
+INSERT INTO movie (movie_id, title, director, actors, genre, release_date, running_time, rating, poster_url, trailer_url, synopsis)
+VALUES
+    INSERT INTO movie (movie_id, title, director, actors, genre, release_date, running_time, rating, poster_url, trailer_url, synopsis) VALUES 
+(1, '괴물', '봉준호', '송강호, 변희봉, 박해일, 배두나', '드라마, 스릴러, 공포', '2023-01-01', 120, 4.1, '/image/1.jpg', 'https://www.youtube.com/embed/1', '한강에서 나타난 괴물에게 사로잡힌 막내딸을 구하기 위한 박강두 가족의 이야기.'),
+(2, '미션임파서블', '크리스토퍼 맥쿼리', '톰 크루즈, 빙 레임스, 사이먼 페그, 레베카 퍼거슨', '액션, 스릴러', '2023-02-01', 130, 4.5, '/image/2.jpg', 'https://www.youtube.com/embed/2', '에단 헌트와 그의 팀이 세계를 위협하는 새로운 위험에 맞서는 이야기.'),
+(3, '헐크', '앙리 소프', '에릭 바나, 제니퍼 코넬리, 샘 엘리엇', '액션, 판타지', '2023-03-01', 110, 3.5, '/image/3.jpg', 'https://www.youtube.com/embed/3', '실험 사고로 헐크로 변신하는 능력을 가진 브루스 배너의 이야기.'),
+(4, '스파이더맨', '샘 레이미', '토비 맥과이어, 커스틴 던스트, 제임스 프랭코', '액션, 어드벤처', '2023-04-01', 115, 3.2, '/image/4.png', 'https://www.youtube.com/embed/4', '거미에 물려 초능력을 얻게 된 피터 파커가 스파이더맨으로 활동하며 뉴욕을 지키는 이야기.'),
+(5, '토르', '타이카 와이티티', '크리스 헴스워스, 톰 히들스턴, 나탈리 포트만', '액션, 판타지', '2023-05-01', 125, 4.7, '/image/5.jpg', 'https://www.youtube.com/embed/5', '아스가르드의 신 토르가 힘을 되찾고, 지구와 아스가르드를 구하기 위해 싸우는 이야기.');
+
+

@@ -1,0 +1,46 @@
+/* 전체 페이지의 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 헤더 스타일 */
+.header {
+    background: white;
+    padding: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header nav a {
+    text-decoration: none;
+    font-size: 30px;
+    font: bold; 
+    margin-right: 20px;
+}
+
+.header nav a:hover {
+    text-decoration: underline;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info p {
+    margin: 0 10px 0 0;
+}
+
+.user-info a {
+    color: black;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.user-info a:hover {
+    text-decoration: underline;
+}

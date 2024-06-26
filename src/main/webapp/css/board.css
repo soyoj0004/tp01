@@ -1,0 +1,184 @@
+@charset "UTF-8";
+/* 전체 페이지의 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* 컨테이너 스타일 */
+.container {
+   /*  width: 80%; */
+    margin: 0 auto;
+    background-color: white;
+}
+
+/* 상단 영역 스타일 */
+header {
+    background: linear-gradient(to bottom, #333333 0%, #ffffff 100%);
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+
+/* 메인 영역 스타일 */
+main {
+    padding: 20px;
+    background-color: white;
+}
+
+/* 검색 폼 스타일 */
+.search-form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-form input[type="text"] {
+    padding: 10px;
+    width: 300px;
+    margin-right: 10px;
+}
+
+.search-form input[type="submit"] {
+    padding: 10px 20px;
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+caption {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+tfoot td {
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 10px;
+}
+
+/* 링크 스타일 */
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+/*  
+body, html {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 100%;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: orange;
+    margin: 0;
+}
+nav {
+    flex-grow: 1;
+    text-align: center;
+}
+nav a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.user-info {
+    margin-right: 20px;
+}
+.user-info p {
+    display: inline;
+    margin-right: 10px;
+}
+main {
+    margin: 5px; 마진 5px 추가
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: left;
+}
+th {
+    background-color: #f8f8f8;
+}
+.search-form{   검색폼 위아래 마진 5px
+   margin: 5px 0;
+} */
+
+
+
+/* 전체 페이지의 기본 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 헤더 스타일 */
+.header {
+    background: white;
+    padding: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header nav a {
+    text-decoration: none;
+    font-size: 30px;
+    font: bold; 
+    margin-right: 20px;
+}
+
+.header nav a:hover {
+    text-decoration: underline;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info p {
+    margin: 0 10px 0 0;
+}
+
+.user-info a {
+    color: black;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.user-info a:hover {
+    text-decoration: underline;
+}
